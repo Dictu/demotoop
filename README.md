@@ -27,6 +27,4 @@ Run the application inside
 - mvn spring-boot:run
 
 # Browse to # 
-http://localhost:8080/demotoop/ 
-
-
+http://localhost:8080/demotoop/ and log in using user/user.
