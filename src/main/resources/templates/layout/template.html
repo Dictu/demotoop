@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0"/>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="Cache-control" content="private"/>
+	<meta http-equiv="Cache-control" content="no-cache"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+	<meta http-equiv="Content-Style-Type" content="text/css"/>
+
+    <title>Ministerie van EZ - Berichtenservice</title>
+    <link rel="icon" th:href="@{/css/favicon.ico}" type="image/x-icon"/>
+    <link rel="shortcut icon" th:href="@{/css/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" th:href="@{/css/general.css}" />
+    <link rel="stylesheet" th:href="@{/css/media.css}" />
+    <link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/material.css}" />	
+	<!-- Compiled and minified jQuery 2.1.4 -->
+	<script th:src="@{/css/jquery-2.1.4.min.js}"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script th:src="@{/css/materialize.min.js}"></script>
+	<style th:inline="text">
+	
+		@media all and (min-width:0px) {
+			body {
+		        font-size: 85%;
+		    }
+			#window {
+				min-width: 280px;
+			}
+			#header-img {
+				margin: 0 0 0 45%;
+		        height: 88px;
+		    	background: no-repeat url('[[@{/css/RO_logo_no_text.png}]]');
+		    }
+		}
+		@media all and (min-width:480px) {
+			#window {
+				min-width: 280px;
+			}
+			#header-img {
+				margin: 0 0 0 48%;
+		        height: 88px;
+		    	background: no-repeat url('[[((${#locale.language}=='nl')? @{/css/RO_Logo_Homepage_nl.png} : @{/css/RO_Logo_Homepage_en.png})]]');
+		    	
+		    	
+		    	
+		    	
+		    }
+		}
+	</style>
+</head>
+<body>
+		
+<div id="window">
+    <div id="header">
+    	<div id="header-img"></div>
+        <nav>
+		    <div class="nav-wrapper">
+		    	<div class="header-inloggen">
+					<a href="#">Login</a>
+				</div>
+		    </div>
+		</nav>
+    </div>
+
+	    <section layout:fragment="content">
+	        <p>Content goes here</p>
+	    </section>
+	<div id="footer-ribbon"></div>
+	<footer class="page-footer"></footer>
+	
+</div>
+	
+</body>
+</html>

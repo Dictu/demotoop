@@ -1,0 +1,39 @@
+body{
+    background: #f3f5f6;
+    color: #000;
+    font-family: Sans, Verdana, Arial, sans-serif;
+    line-height: 1.5;
+    margin-top: 30px !important;
+}
+
+h2 {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+#window {
+    background: #fff;
+    margin-left: auto;
+    margin-right: auto;
+	box-shadow: #666 0px 0px 8px;
+}
+
+#footer-ribbon {
+    clear: both;
+    width: 44px;
+    height: 25px;
+    background-color: #154273;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.logo {
+	height: 50px
+}
+
+i.icon-red {
+    color: red;
+}

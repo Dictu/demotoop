@@ -1,0 +1,85 @@
+@media all and (min-width:669px) {
+	body {
+        font-size: 85%;
+    }
+	#window {
+		max-width: 646px;
+        min-width: 646px;
+	}
+}
+
+@media all and (min-width:1048px) {
+	body {
+        font-size: 95%;
+    }
+	#window {
+		max-width: 1008px;
+        min-width: 1008px;
+	}
+}
+
+@media all and (min-width:1440px) {
+	body {
+        font-size: 95%;
+    }
+	#window {
+		max-width: 1224px;
+        min-width: 1224px;
+	}
+}
+@-webkit-keyframes indeterminate {
+	0% {
+		left:-35%;
+		right:100%
+	}
+	60% {
+		left:100%;
+		right:-90%
+	}
+	100% {
+		left:100%;
+		right:-90%
+	}
+}
+@keyframes indeterminate {
+	0% {
+		left:-35%;
+		right:100%
+	}
+	60% {
+		left:100%;
+		right:-90%
+	}
+	100% {
+		left:100%;
+		right:-90%
+	}
+}
+@-webkit-keyframes indeterminate-short {
+	0% {
+		left:-200%;
+		right:100%
+	}
+	60% {
+		left:107%;
+		right:-8%
+	}
+	100% {
+		left:107%;
+		right:-8%
+	}
+}
+@keyframes indeterminate-short {
+	0% {
+		left:-200%;
+		right:100%
+	}
+	60% {
+		left:107%;
+		right:-8%
+	}
+	100% {
+		left:107%;
+		right:-8%
+	}
+}
