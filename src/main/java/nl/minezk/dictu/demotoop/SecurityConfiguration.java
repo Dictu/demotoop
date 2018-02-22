@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
     @Bean
 	public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
     	List<UserDetails> users = new ArrayList<>();
-    	UserDetails user = User.withUsername("user").password("user").authorities("ROLE_USER").build();
+    	UserDetails user = User.withUsername("user").password("{noop}user").authorities("ROLE_USER").build();
         users.add(user);
         return new InMemoryUserDetailsManager(users);
 	}

@@ -9,14 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import nl.minezk.dictu.demotoop.model.Card;
 
 @Configuration
-public class DemoToopConfiguration extends WebMvcConfigurerAdapter {
+public class DemoToopConfiguration {
 	
 	@Bean
 	public List<Card> cards() {
@@ -39,8 +38,7 @@ public class DemoToopConfiguration extends WebMvcConfigurerAdapter {
 	    lci.setParamName("lang");
 	    return lci;
 	}
-	
-	@Override
+
 	public void addInterceptors(InterceptorRegistry registry) {
 	    registry.addInterceptor(localeChangeInterceptor());
 	}
