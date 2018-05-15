@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -26,28 +25,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter  {
      */
     @Override  
     protected void configure(HttpSecurity http) throws Exception {
-    	http        
-	        .authorizeRequests()
-	        .antMatchers("/css/**").permitAll()
-	        .antMatchers("/fonts/**").permitAll()
-	        .anyRequest().fullyAuthenticated();
-        http
-        	.formLogin()
-				.loginPage("/login")
-				.failureUrl("/login?error")
-				.permitAll();
-        http
-        	.logout()
-        		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-        		.logoutSuccessUrl("/")
-                .permitAll();
+    	http.csrf().disable();
+//    	http        
+//	        .authorizeRequests()
+//	        .antMatchers("/css/**").permitAll()
+//	        .antMatchers("/fonts/**").permitAll()
+//	        .anyRequest().fullyAuthenticated();
+//        http
+//        	.formLogin()
+//				.loginPage("/login")
+//				.failureUrl("/login?error")
+//				.permitAll();
+//        http
+//        	.logout()
+//        		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//        		.logoutSuccessUrl("/")
+//                .permitAll();
     }
-    
-    @Bean
-	public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
-    	List<UserDetails> users = new ArrayList<>();
-    	UserDetails user = User.withUsername("user").password("{noop}user").authorities("ROLE_USER").build();
-        users.add(user);
-        return new InMemoryUserDetailsManager(users);
-	}
+//    
+//    @Bean
+//	public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+//    	List<UserDetails> users = new ArrayList<>();
+//    	UserDetails user = User.withUsername("user").password("{noop}user").authorities("ROLE_USER").build();
+//        users.add(user);
+//        return new InMemoryUserDetailsManager(users);
+//	}
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="~{layout/template}">
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	
+    <title th:text="#{index.title}"></title>
+
+    <script>
+	    $(document).ready(function() {
+	    	$('#countrySelect').removeAttr("style");
+	    	$('#countrySelect').material_select();
+		});
+    </script>
+
+</head>
+<body>
+
+    <div id="container">
+    <div id="content" layout:fragment="content">
+	    <div class="row">
+	        <div class="col s12">
+	          <div class="card">
+	          	<div class="card-image">
+					<img id="img" alt="toop" class="responsive-img" th:src="@{/css/logo_TOOP_dash_1.png}"/>
+				</div>
+	            <div class="card-content">
+	            	<b th:text="#{index.header}"></b>
+	            	<p th:text="#{index.introtext}"></p>
+	            	<br/>
+	            	<p th:text="#{index.countrytext}"></p>
+	            </div>
+	          </div>
+	        </div>
+   		</div>
+        <div class="row">
+    		<div class="col s6">
+				<p th:text="${message}"></p>
+	            <form method="post" id="countryForm" th:action="@{${destination}} ">
+	            	<fieldset style="margin-left: 0%; margin-top: -3%;">
+	                <input type="hidden" th:each="entry : ${data}" th:name="${entry.key}" th:value="${entry.value}" />
+						<div class="row">
+							<div class="input-field">
+								<select th:name="'country'" id="countrySelect" style="display: inline;">
+									<option disabled="disabled" selected="selected" value=""> -- select your country -- </option>
+									<option th:each="country, iterStat : ${countries}" 
+				                        th:value="${country.countryCode}" 
+				                        th:id="'cntry' + ${iterStat.count}" 
+				                        th:text="${country.countryName}"
+				                        th:attr="data-icon=@{/css/flags/__${country.countryCode.toLowerCase()}__.png}"
+				                        ></option>
+								</select>
+							</div>
+						</div>
+						<button class="btn waves-effect waves-light" type="submit" name="action">Continue
+							<i class="material-icons right">send</i>
+						</button>
+					</fieldset>
+	            </form>
+			</div>
+		</div>
+		<div class="row">
+	    	<div class="col s4">
+	    		<img class="responsive-img" th:with="lang=${#locale.language}" th:src="@{/css/} + ${lang} + '_cef_trans.png'"/>
+	    	</div>
+	    </div>
+        </div>
+	</div>
+</body>
+</html>

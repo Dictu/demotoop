@@ -10,16 +10,6 @@
 <meta name="author" content=""></meta>
 
 <title th:text="#{index.title}"></title>
-<style type="text/css">
-
-	.card {
-		min-height: 157px;
-	}
-	.card-image {
-		display: flex;
-	}
-
-</style>
 
 </head>
 <body>
@@ -28,6 +18,9 @@
 	    <div class="row">
 	        <div class="col s12">
 	          <div class="card">
+	          	<div class="card-image">
+					<img id="img" alt="toop" class="responsive-img" th:src="@{/css/logo_TOOP_dash_1.png}"/>
+				</div>
 	            <div class="card-content">
 	            	<b th:text="#{index.header}"></b>
 	            	<p th:text="#{index.introtext}"></p>

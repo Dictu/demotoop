@@ -13,6 +13,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import nl.minezk.dictu.demotoop.model.Card;
+import nl.minezk.dictu.demotoop.model.Company;
 
 @Configuration
 public class DemoToopConfiguration {
@@ -20,8 +21,20 @@ public class DemoToopConfiguration {
 	@Bean
 	public List<Card> cards() {
 		List<Card> cards = Collections.synchronizedList(new ArrayList<>());
-		cards.add(Card.builder().image("/demotoop/css/eIDAS Login eID-Small.png").link("/demotoop/landing").name("Demo Login").title_en("Demo Login").title_nl("Demo Login").build());
+		cards.add(Card.builder().image("/demotoop/css/eIDAS Login eID-Small.png").link("/demotoop/login").name("Demo Login").title_en("Demo Login").title_nl("Demo Login").build());
 		return cards;
+	}
+	
+	@Bean
+	public List<Company> companies() {
+		List<Company> result = Collections.synchronizedList(new ArrayList<>());
+		result.add(Company.builder().name("ABC").build());
+		return result;
+	}
+	
+	@Bean
+	public String toopNodeConsumerUrl() {
+		return "http://localhost:8081/toopnode/consumer/provide";
 	}
 	
 	//language file beans. from http://www.baeldung.com/spring-boot-internationalization

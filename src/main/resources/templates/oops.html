@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="~{layout/template}">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title th:text="#{index.title}"></title>
+</head>
+<body>
+	<div id="container">
+		<div id="content" layout:fragment="content">
+			<div class="row" style="margin-top: 1em;">
+				<div class="col s12">
+					<div class="card-panel red lighten-3">
+						<i class="material-icons icon-red left">error_outline</i>
+						<p th:text="'Something went wrong: ' + ${model.httpstatus} + ' - ' + ${model.httpstatus.reasonPhrase}"></p>
+						<p th:text="'Code: ' + ${model?.errorcode}"></p>
+						<span th:text="${model.exception}"></span>
+			        </div>
+		        </div>
+	        </div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -11,29 +11,34 @@
 <meta name="author" content=""></meta>
 
 <title th:text="#{index.title}"></title>
-
+	<script>
+    	window.onload = function() {
+    		  document.forms['samlForm'].submit();
+   		}
+    </script>
 </head>
 <body>
 <div id="container">
 	<div id="content" layout:fragment="content">
 		<div class="row">
 	    	<div class="col s12">
-				<div class="right-align"><img style="width: 24px;margin-top: 2px;" th:src="@{/css/flags/__${user.countryCode.toLowerCase()}__.png}"/></div>
+				<div class="right-align"><img style="width: 24px;margin-top: 2px;" th:src="@{/css/flags/__${user.countryCode.toLowerCase()}__.png}"/></div>	    	
 				<h6 class="right-align" th:text="#{response.welcome1} + ${user.firstName} + ' ' + ${user.lastName} + '(' + ${user.dateOfBirth} + ')' + #{response.welcome2}" ></h6>
 				<h6 class="right-align" th:with="baseUrl=@{/}"><a th:href="@{/logout}" th:text="#{response.logout}"></a></h6>
 				
 				<div class="col s4">
 					<div class="card">
 						<div class="card-content">
-							<a class="btn waves-effect waves-light" th:href="@{/landing2}">Represent
-							</a>
-							<a class="btn waves-effect waves-light disabled">Registration
-							</a>
-							<a class="btn waves-effect waves-light" th:href="#{tvsresponse.survey2.url}">Survey
-							</a>
+							Online company registration:
+							<ul>
+								<li><i class="material-icons">check_box</i> company data requested</li>
+								<li><i class="material-icons">check_box_outline_blank</i> company data received</li>
+								<li><i class="material-icons">check_box_outline_blank</i> registration confirmed</li>
+							</ul>							
 						</div>
 					</div>
 				</div> 
+				
 				<div class="col s8">
 					<div class="card">
 						<div class="card-image">
@@ -41,22 +46,38 @@
 						</div>
 						<div class="card-content">
 							<b th:text="#{index.header}"></b>
-							<p>
-							Your log in has been successful.
-
-Enter a company to represent. This feature is currently available for companies registered in Norway and Sweden.
-
-We appreciate your feedback on this demo portal. Please select ”start survey” any time.
-							</p>
+							<p>Please wait while we retrieve your company data from the business register...</p>
+							<form th:method="POST" id="samlForm" th:action="@{/landing5}">
+								<fieldset>
+									<div class="row">
+										<div class="col s12">
+						             		<noscript>
+								                 <p>
+								                     <strong>Note:</strong> Since your browser does not support
+								                     JavaScript, you must press the Continue button once to proceed.
+								                 </p>
+						                 		<input type="submit" value="Continue" />
+						             		</noscript>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col s12">
+											<div class="progress">
+												<div class="indeterminate"></div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form>
 						</div>
 					</div>
-				</div>		
-				
+				</div>
 		     	<div th:text="${errorMessage}"></div>
 
      	
      		</div>
      	</div>
+	
 
 	</div>
 </div>

@@ -104,14 +104,39 @@
 		<dependency>
 	        <groupId>org.apache.httpcomponents</groupId>
 	        <artifactId>httpclient</artifactId>
-	        <version>4.5.3</version>
 		</dependency>
 		<dependency>
 		    <groupId>nz.net.ultraq.thymeleaf</groupId>
 		    <artifactId>thymeleaf-layout-dialect</artifactId>
-		    <version>${thymeleaf-layout-dialect.version}</version>
 		</dependency>
 		
+		<dependency>
+	        <groupId>nl.minezk.dictu</groupId>
+	        <artifactId>toopapi</artifactId>
+	        <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- eIDAS SAML engine -->
+		<dependency>
+            <groupId>eidassaml</groupId>
+            <artifactId>starterkit</artifactId>
+            <version>1.1.0</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.slf4j</groupId>
+            		<artifactId>jcl-over-slf4j</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>org.bouncycastle</groupId>
+            		<artifactId>bcprov-jdk15on</artifactId>
+            	</exclusion>
+            </exclusions>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		</dependency>
 		
 	</dependencies>
 

@@ -18,7 +18,7 @@
 	<div id="content" layout:fragment="content">
 		<div class="row">
 	    	<div class="col s12">
-				<div class="right-align"><img style="width: 24px;margin-top: 2px;" th:src="@{/css/flags/__${user.countryCode.toLowerCase()}__.png}"/></div>
+				<div class="right-align"><img style="width: 24px;margin-top: 2px;" th:src="@{/css/flags/__${user.countryCode.toLowerCase()}__.png}"/></div>	    	
 				<h6 class="right-align" th:text="#{response.welcome1} + ${user.firstName} + ' ' + ${user.lastName} + '(' + ${user.dateOfBirth} + ')' + #{response.welcome2}" ></h6>
 				<h6 class="right-align" th:with="baseUrl=@{/}"><a th:href="@{/logout}" th:text="#{response.logout}"></a></h6>
 				
@@ -27,13 +27,14 @@
 						<div class="card-content">
 							<a class="btn waves-effect waves-light" th:href="@{/landing2}">Represent
 							</a>
-							<a class="btn waves-effect waves-light disabled">Registration
+							<a class="btn waves-effect waves-light" th:href="@{/landing4}">Registration
 							</a>
 							<a class="btn waves-effect waves-light" th:href="#{tvsresponse.survey2.url}">Survey
 							</a>
 						</div>
 					</div>
 				</div> 
+				
 				<div class="col s8">
 					<div class="card">
 						<div class="card-image">
@@ -41,17 +42,16 @@
 						</div>
 						<div class="card-content">
 							<b th:text="#{index.header}"></b>
-							<p>
-							Your log in has been successful.
-
-Enter a company to represent. This feature is currently available for companies registered in Norway and Sweden.
-
-We appreciate your feedback on this demo portal. Please select ”start survey” any time.
-							</p>
+							<p>Please enter the identifier of the company you want to represent.</p>
+							<form action="#" th:action="@{/enter_company}" th:object="${company}" method="post">
+								<fieldset>
+									<input type="text" th:field="*{name}" disabled placeholder="Company name" />									
+								</fieldset>
+							</form>
+							Company has not been registered at this demo portal yet. Please start online company registration or select another company to represent.
 						</div>
 					</div>
-				</div>		
-				
+				</div>
 		     	<div th:text="${errorMessage}"></div>
 
      	

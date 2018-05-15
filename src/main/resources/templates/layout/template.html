@@ -17,11 +17,16 @@
     <link rel="stylesheet" th:href="@{/css/media.css}" />
     <link rel="stylesheet" th:href="@{/css/materialize.min.css}" />
 	<link rel="stylesheet" th:href="@{/css/material.css}" />	
-	<!-- Compiled and minified jQuery 2.1.4 -->
-	<script th:src="@{/css/jquery-2.1.4.min.js}"></script>
-	<!-- Compiled and minified JavaScript -->
+	<script th:src="@{/css/jquery.min.js}"></script>
 	<script th:src="@{/css/materialize.min.js}"></script>
 	<style th:inline="text">
+	
+		.card {
+			min-height: 157px;
+		}
+		.card-image {
+			display: flex;
+		}
 	
 		@media all and (min-width:0px) {
 			body {
@@ -60,7 +65,7 @@
         <nav>
 		    <div class="nav-wrapper">
 		    	<div class="header-inloggen">
-					<a href="#">Login</a>
+					<a href="#">Toop</a>
 				</div>
 		    </div>
 		</nav>
