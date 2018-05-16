@@ -18,8 +18,7 @@ public class ToopNodeClientService extends RestClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ToopNodeClientService.class);
 
 	@Autowired
-	private String toopNodeConsumerUrl;
-	
+	private String toopNodeConsumerUrl;	
 	
 	public ChamberOfCommerceDataSet getCoCData(String country, String companyName) throws IOException {
 		String url = toopNodeConsumerUrl + "?country=" + country + "&id=" + companyName;
