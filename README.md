@@ -7,6 +7,7 @@ This project depends on:
 - JDK 9 (http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase9-3934878.html)
 - Apache Maven 3x (https://maven.apache.org/)
 - Lombok (https://projectlombok.org)
+
 All three need to be installed, configured and running properly.
 
 # Check out #
