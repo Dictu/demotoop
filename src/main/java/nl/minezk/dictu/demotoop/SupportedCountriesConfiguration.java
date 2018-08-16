@@ -13,7 +13,7 @@ import nl.minezk.dictu.demotoop.model.Country;
 public class SupportedCountriesConfiguration {
 
 	/**
-	 * Returns a list of supported {@link Country} elements if there is one; otherwise create a new empty one;
+	 * Returns a list of supported {@link Country} elements.
 	 * @return supportedCountries
 	 */
 	@Bean
@@ -22,7 +22,6 @@ public class SupportedCountriesConfiguration {
 		countries.add(Country.builder().countryCode("SE").countryName("Sweden").build());
 		countries.add(Country.builder().countryCode("NO").countryName("Norway").build());
 		countries.add(Country.builder().countryCode("NL").countryName("The Netherlands").build());
-		countries.add(Country.builder().countryCode("DR").countryName("Drenthe").build());
 		return countries;
 	}
 }

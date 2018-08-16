@@ -58,11 +58,12 @@ public class LandingController {
 	
 	@PostMapping(value={"/landing5"})
     public ModelAndView landing5() throws IOException, ToopException {
+		User user = getUser();
 		String companyName = ((Company)request.getSession().getAttribute("company")).getName();
-		String result = toopNodeService.getCoCData("NL", companyName).toString();
+		String result = toopNodeService.getCoCData(user.getCountryCode(), companyName).toString();
 		request.getSession().setAttribute("companyResult", result);
 		ModelMap model = new ModelMap();
-		model.addAttribute("user", getUser());
+		model.addAttribute("user", user);
 		model.addAttribute("companyResult", request.getSession().getAttribute("companyResult"));
 		return new ModelAndView("landing5", model);
 	}

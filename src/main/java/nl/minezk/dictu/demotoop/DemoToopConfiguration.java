@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -17,6 +18,11 @@ import nl.minezk.dictu.demotoop.model.Company;
 
 @Configuration
 public class DemoToopConfiguration {
+	
+	@Value("${toop.node.consumer.url}")
+	public String toopNodeConsumerUrl;
+	
+	
 	
 	@Bean
 	public List<Card> cards() {
@@ -34,7 +40,7 @@ public class DemoToopConfiguration {
 	
 	@Bean
 	public String toopNodeConsumerUrl() {
-		return "http://localhost:8081/toopnode/consumer/provide";
+		return toopNodeConsumerUrl;
 	}
 	
 	//language file beans. from http://www.baeldung.com/spring-boot-internationalization

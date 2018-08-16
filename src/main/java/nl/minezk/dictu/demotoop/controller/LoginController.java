@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -69,15 +70,15 @@ public class LoginController {
 		return new ModelAndView("index", map);
 	}
 	
-	@GetMapping(value={"/fakelogin"})
-	public ModelAndView fake() {
+	@GetMapping(value={"/fakelogin/{countryCode}"})
+	public ModelAndView fake(@PathVariable(required=true) String countryCode) {
 		User user = User.builder()
-				.countryCode("NL")
+				.countryCode(countryCode)
 				.dateOfBirth("01-01-1980")
 				.firstName("Bob")
 				.lastName("de Bouwer")
 				.id("NL/NL/1234")
-				.userName("...")
+				.userName("bob")
 				.build();
 		request.getSession().setAttribute("user", user);
 		LOGGER.debug("Sessie set: " + request.getSession().getId());
