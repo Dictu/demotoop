@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import eu.toop.node.model.ChamberOfCommerceDataSet;
 import nl.minezk.dictu.demotoop.model.Company;
 import nl.minezk.dictu.demotoop.model.ToopException;
 import nl.minezk.dictu.demotoop.model.User;
@@ -60,11 +61,11 @@ public class LandingController {
     public ModelAndView landing5() throws IOException, ToopException {
 		User user = getUser();
 		String companyName = ((Company)request.getSession().getAttribute("company")).getName();
-		String result = toopNodeService.getCoCData(user.getCountryCode(), companyName).toString();
-		request.getSession().setAttribute("companyResult", result);
+		ChamberOfCommerceDataSet dataSet = toopNodeService.getCoCData(user.getCountryCode(), companyName);
+		request.getSession().setAttribute("dataset", dataSet);
 		ModelMap model = new ModelMap();
 		model.addAttribute("user", user);
-		model.addAttribute("companyResult", request.getSession().getAttribute("companyResult"));
+		model.addAttribute("dataset", dataSet);
 		return new ModelAndView("landing5", model);
 	}
 
@@ -85,7 +86,7 @@ public class LandingController {
     public ModelAndView landing6() throws ToopException  {
 		ModelMap model = new ModelMap();
 		model.addAttribute("user", getUser());
-		model.addAttribute("companyResult", request.getSession().getAttribute("companyResult"));
+		model.addAttribute("dataset", request.getSession().getAttribute("dataset"));
 		return new ModelAndView("landing6", model);
 	}
 	
@@ -93,7 +94,7 @@ public class LandingController {
     public ModelAndView landing7() throws ToopException {
 		ModelMap model = new ModelMap();
 		model.addAttribute("user", getUser());
-		model.addAttribute("companyResult", request.getSession().getAttribute("companyResult"));
+		model.addAttribute("dataset", request.getSession().getAttribute("dataset"));
 		return new ModelAndView("landing7", model);
 	}
 	

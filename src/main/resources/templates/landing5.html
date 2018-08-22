@@ -49,7 +49,60 @@
 							<p>
 							Company data received:
 							</p>
-							<p th:text="${companyResult}"></p>
+							<table class="striped highlight">
+								<tr>
+									<td>Company Code</td>
+									<td th:text="${dataset.companyCode}"></td>
+								</tr>
+								<tr>
+									<td>Company Name</td>
+									<td th:text="${dataset.companyName}"></td>
+								</tr>
+								<tr>
+									<td>Company Type</td>
+									<td th:text="${dataset.companyType}"></td>
+								</tr>
+								<tr>
+									<td>Legal Status</td>
+									<td th:text="${dataset.legalStatus}"></td>
+								</tr>
+								<tr>
+									<td>Legal Status Effective Date</td>
+									<td th:text="${dataset.legalStatusEffectiveDate}"></td>
+								</tr>
+								<tr>
+									<td>Registration Authority</td>
+									<td th:text="${dataset.registrationAuthority}"></td>
+								</tr>
+								<tr>
+									<td>Registration Date</td>
+									<td th:text="${dataset.registrationDate}"></td>
+								</tr>
+								<tr>
+									<td>Registration Number</td>
+									<td th:text="${dataset.registrationNumber}"></td>
+								</tr>
+								<tr>
+									<td>Activity Declaration</td>
+									<td th:text="${dataset.activityDeclaration}"></td>
+								</tr>
+								<tr>
+									<td>Street Name</td>
+									<td th:text="${dataset.headOfficeAddres.streetName}"></td>
+								</tr>
+								<tr>
+									<td>Postal Code</td>
+									<td th:text="${dataset.headOfficeAddres.postalCode}"></td>
+								</tr>
+								<tr>
+									<td>City</td>
+									<td th:text="${dataset.headOfficeAddres.city}"></td>
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td th:text="${dataset.headOfficeAddres.country}"></td>
+								</tr>
+							</table>
 							
 							<a class="btn waves-effect waves-light" th:href="@{/landing6}">Create account
 							</a>
