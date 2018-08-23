@@ -33,7 +33,12 @@
 				<div class="col s4">
 					<div class="card">
 						<div class="card-image">
-							<img id="img" alt="Herkenningsmakelaar" class="responsive-img" th:src="${card.image}"/>
+							<img id="img" alt="eIDAS Login" class="responsive-img" th:src="${card.image}"/>
+							<div class="col s8" style="padding-left: 10px;"><p style="margin:0px"><b class="flow-text" th:text="${card.name}"></b></p></div>
+						</div>
+						<div class="card-content">
+							<div th:if="${#locale.language}=='nl'" style="padding-left: 10px;"><p style="margin:0px" th:text="${card.title_nl}"></p></div>
+							<div th:unless="${#locale.language}=='nl'" style="padding-left: 10px;"><p style="margin:0px" th:text="${card.title_en}"></p></div>
 						</div>
 						<div class="card-action" th:if="${#locale.language}=='en'">
 							<a th:href="${card.link}" th:text="#{index.linktext}" th:title="${card.title_en}"></a>

@@ -19,6 +19,7 @@ public class SupportedCountriesConfiguration {
 	@Bean
 	public List<Country> supportedCountries() {
 		List<Country> countries = Collections.synchronizedList(new ArrayList<>());
+		countries.add(Country.builder().countryCode("AA").countryName("Atlantis").build());
 		countries.add(Country.builder().countryCode("SE").countryName("Sweden").build());
 		countries.add(Country.builder().countryCode("NO").countryName("Norway").build());
 		countries.add(Country.builder().countryCode("NL").countryName("The Netherlands").build());

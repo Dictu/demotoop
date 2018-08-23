@@ -50,6 +50,9 @@ public class LoginController {
 	
 	@Autowired
 	private EidasSAMLService samlService;
+	
+	@Autowired
+	private Map<String, User> fakeUsers;
 
 	@GetMapping(value={"/login"})
     public ModelAndView login() throws ToopException {
@@ -64,6 +67,10 @@ public class LoginController {
 	
 	@GetMapping(value={"/logout"})
     public ModelAndView logout() {
+		User user = (User) request.getSession().getAttribute("user");
+		if (null != user && null != user.getDataSet()) {
+			user.setDataSet(null);
+		}
 		request.getSession().invalidate();
 		ModelMap map = new ModelMap();
 		map.addAttribute("cards", cards);
@@ -72,19 +79,25 @@ public class LoginController {
 	
 	@GetMapping(value={"/fakelogin/{countryCode}"})
 	public ModelAndView fake(@PathVariable(required=true) String countryCode) {
-		User user = User.builder()
-				.countryCode(countryCode)
-				.dateOfBirth("01-01-1980")
-				.firstName("Bob")
-				.lastName("de Bouwer")
-				.id("NL/NL/1234")
-				.userName("bob")
+		User fakeUser = fakeUsers.get(countryCode);
+		//make copy
+		User user = User.builder().countryCode(fakeUser.getCountryCode())
+				.dateOfBirth(fakeUser.getDateOfBirth())
+				.firstName(fakeUser.getFirstName())
+				.id(fakeUser.getId())
+				.lastName(fakeUser.getLastName())
+				.userName(fakeUser.getUserName())
 				.build();
-		request.getSession().setAttribute("user", user);
-		LOGGER.debug("Sessie set: " + request.getSession().getId());
-		ModelMap model = new ModelMap();
-		model.addAttribute("user", user);		
-		return new ModelAndView("landing", model);
+		if (null != user) {
+			request.getSession().setAttribute("user", user);
+			LOGGER.debug("Sessie set: " + request.getSession().getId());
+			ModelMap model = new ModelMap();
+			model.addAttribute("user", user);		
+			return new ModelAndView("landing", model);
+		}
+		else {
+			throw new IllegalArgumentException("Invalid country code: " + countryCode);
+		}
 	}
 	
 	@PostMapping(value={"/acs"})

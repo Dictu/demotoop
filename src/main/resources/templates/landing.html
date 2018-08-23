@@ -20,17 +20,22 @@
 	    	<div class="col s12">
 				<div class="right-align"><img style="width: 24px;margin-top: 2px;" th:src="@{/css/flags/__${user.countryCode.toLowerCase()}__.png}"/></div>
 				<h6 class="right-align" th:text="#{response.welcome1} + ${user.firstName} + ' ' + ${user.lastName} + '(' + ${user.dateOfBirth} + ')' + #{response.welcome2}" ></h6>
+				<div th:if="${user.dataSet != null}"><h6 class="right-align" th:text="'You are respresenting ' + ${user.dataSet.companyName} + '. This company has a record in this TOOP portal'"></h6></div>
 				<h6 class="right-align" th:with="baseUrl=@{/}"><a th:href="@{/logout}" th:text="#{response.logout}"></a></h6>
 				
 				<div class="col s4">
 					<div class="card">
 						<div class="card-content">
-							<a class="btn waves-effect waves-light" th:href="@{/landing2}">Represent
-							</a>
-							<a class="btn waves-effect waves-light disabled">Registration
-							</a>
-							<a class="btn waves-effect waves-light" th:href="#{tvsresponse.survey2.url}">Survey
-							</a>
+							<div th:if="${user.dataSet == null}" class="collection">
+								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing2}">company representation</a>
+								<a class="btn waves-effect waves-light collection-item disabled">company registration</a>
+								<a class="btn waves-effect waves-light collection-item disabled" th:href="#{tvsresponse.survey2.url}">survey</a>
+							</div>
+							<div th:if="${user.dataSet != null}" class="collection">
+								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing2}">company representation</a>
+								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing4}">update company record</a>
+								<a class="btn waves-effect waves-light collection-item" th:href="#{tvsresponse.survey2.url}">survey</a>
+							</div>
 						</div>
 					</div>
 				</div> 
@@ -46,7 +51,7 @@
 
 Enter a company to represent. This feature is currently available for companies registered in Norway and Sweden.
 
-We appreciate your feedback on this demo portal. Please select ”start survey” any time.
+We appreciate your feedback on this demo portal. Please select ”start survey” afterwards.
 							</p>
 						</div>
 					</div>

@@ -1,5 +1,6 @@
 package nl.minezk.dictu.demotoop.model;
 
+import eu.toop.node.model.ChamberOfCommerceDataSet;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,4 +14,7 @@ public class User {
 	private String lastName;
 	private String dateOfBirth;
 	private String countryCode;
+	
+	//The company the user represents
+	private ChamberOfCommerceDataSet dataSet;
 }
