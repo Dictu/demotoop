@@ -43,7 +43,9 @@ public class LandingController {
 	@GetMapping(value={"/landing2"})
     public ModelAndView landing2() throws ToopException {
 		ModelMap model = new ModelMap();
-		model.addAttribute("user", getUser());
+		User user = getUser();
+		user.setDataSet(null); //since we are starting all over we need to remowe the old set.
+		model.addAttribute("user", user);
         model.addAttribute("company", Company.builder().name("").build());
         return new ModelAndView("landing2", model);
     }
