@@ -5,7 +5,9 @@ import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStore.PasswordProtection;
 import java.security.KeyStoreException;
+import java.security.Security;
 
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +16,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class EidasSAMLConfiguration {
+	
+	{
+		Security.addProvider(new BouncyCastleProvider());
+	}
 	
 	@Value("${eidas.node.service.provider.url}")
 	public String eidasNodeServiceProviderURL;

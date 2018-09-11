@@ -29,12 +29,12 @@
 							<div th:if="${user.dataSet == null}" class="collection">
 								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing2}">company representation</a>
 								<a class="btn waves-effect waves-light collection-item disabled">company registration</a>
-								<a class="btn waves-effect waves-light collection-item disabled" th:href="#{tvsresponse.survey2.url}">survey</a>
+								<a class="btn waves-effect waves-light collection-item disabled" th:href="#{tvsresponse.survey2.url}">apply for service</a>
 							</div>
 							<div th:if="${user.dataSet != null}" class="collection">
 								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing2}">company representation</a>
 								<a class="btn waves-effect waves-light collection-item" th:href="@{/landing4}">update company record</a>
-								<a class="btn waves-effect waves-light collection-item" th:href="#{tvsresponse.survey2.url}">survey</a>
+								<a class="btn waves-effect waves-light collection-item" th:href="#{tvsresponse.survey2.url}">apply for service</a>
 							</div>
 						</div>
 					</div>
